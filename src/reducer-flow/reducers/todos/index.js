@@ -4,7 +4,7 @@ import * as actions from './actions'
 
 export const INITIAL_STATE = []
 
-const all = (state = INITIAL_STATE, action = { type: null }) => {
+const todos = (state = INITIAL_STATE, action = { type: null }) => {
   switch (action.type) {
     case actions.ADD_TODO:
       return state.concat({
@@ -24,4 +24,4 @@ const all = (state = INITIAL_STATE, action = { type: null }) => {
   return state
 }
 
-export default all
+export default todos

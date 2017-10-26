@@ -7,9 +7,13 @@ import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 
 import App from './app'
-import reducer from 'reducers/all'
+import reducer from 'reducers'
 
 const store = createStore(reducer)
+
+store.subscribe(() => {
+  console.log('state', store.getState())
+})
 
 const renderApp = (NextApp) => {
   render(

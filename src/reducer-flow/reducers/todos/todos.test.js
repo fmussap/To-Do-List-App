@@ -3,11 +3,11 @@
 import { expect } from 'chai'
 import deepFreeze from 'deep-freeze'
 
-import all, { INITIAL_STATE } from './index'
+import todos, { INITIAL_STATE } from './index'
 import { ADD_TODO, TOGGLE_ITEM } from './actions'
 
 it('should all be a function', () => {
-  expect(all).to.be.a('function')
+  expect(todos).to.be.a('function')
 })
 
 it('should add a todo { id: 0, text: task 1 }', () => {
@@ -18,7 +18,7 @@ it('should add a todo { id: 0, text: task 1 }', () => {
   })
   const after = [{
     id: 0, text: 'task 1', completed: false }]
-  expect(all(before, action)).to.be.deep.equal(after)
+  expect(todos(before, action)).to.be.deep.equal(after)
 })
 
 it('should add a todo { id: 1, text: task 2 }', () => {
@@ -31,7 +31,7 @@ it('should add a todo { id: 1, text: task 2 }', () => {
     { id: 0, text: 'task 1', completed: false },
     { id: 1, text: 'task 2', completed: false }
   ]
-  expect(all(before, action)).to.be.deep.equal(after)
+  expect(todos(before, action)).to.be.deep.equal(after)
 })
 
 it('should toggle first todo', () => {
@@ -49,7 +49,7 @@ it('should toggle first todo', () => {
     { id: 0, text: 'task 1', completed: true },
     { id: 1, text: 'task 2', completed: false }
   ])
-  expect(all(before, action)).to.be.deep.equal(after)
+  expect(todos(before, action)).to.be.deep.equal(after)
 })
 
 it('should toggle second todo', () => {
@@ -67,11 +67,11 @@ it('should toggle second todo', () => {
     { id: 0, text: 'task 1', completed: false },
     { id: 1, text: 'task 2', completed: true }
   ])
-  expect(all(before, action)).to.be.deep.equal(after)
+  expect(todos(before, action)).to.be.deep.equal(after)
 })
 
 it('with no and no type should return last state', () => {
-  expect(all()).to.be.deep.equal(INITIAL_STATE)
+  expect(todos()).to.be.deep.equal(INITIAL_STATE)
 })
 
 it('with state and no type should return this state', () => {
@@ -86,5 +86,5 @@ it('with state and no type should return this state', () => {
   const after = [{
     id: 0, text: 'task 1', completed: false
   }]
-  expect(all(before, action)).to.be.deep.equal(after)
+  expect(todos(before, action)).to.be.deep.equal(after)
 })
